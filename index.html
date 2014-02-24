@@ -10,5 +10,123 @@
   </head>
 
   <body>
+    <table id="grid"></table>
+    <div id="pager"></div>
+    <script>
+      var data = [
+        {
+            "name": "Vargas Middleton",
+            "timestamp": 1258689523,
+            "verified": true,
+            "website": "http://KirstenJimenez.com"
+        },
+        {
+            "name": "Mcgowan Clements",
+            "timestamp": 1217051240,
+            "verified": false,
+            "website": "http://YangBurgess.com"
+        },
+        {
+            "name": "Renee Santos",
+            "timestamp": 1196217866,
+            "verified": false,
+            "website": "http://LetaMyers.com"
+        },
+        {
+            "name": "Tran Morris",
+            "timestamp": 1319279414,
+            "verified": false,
+            "website": "http://LorenaWallace.com"
+        },
+        {
+            "name": "Delaney Stevenson",
+            "timestamp": 1201414295,
+            "verified": false,
+            "website": "http://GuerraJohnson.com"
+        },
+        {
+            "name": "Annie Perez",
+            "timestamp": 1162688545,
+            "verified": false,
+            "website": "http://StephensPowell.com"
+        },
+        {
+            "name": "Virgie Noel",
+            "timestamp": 1293440323,
+            "verified": false,
+            "website": "http://JanellBradford.com"
+        },
+        {
+            "name": "Molly Melton",
+            "timestamp": 1263866191,
+            "verified": true,
+            "website": "http://LottieMclaughlin.com"
+        },
+        {
+            "name": "Hewitt Duncan",
+            "timestamp": 1119160276,
+            "verified": false,
+            "website": "http://WiseMejia.com"
+        },
+        {
+            "name": "Hardin Rocha",
+            "timestamp": 1336024359,
+            "verified": false,
+            "website": "http://JillianSellers.com"
+        }
+    ]
+      $("#grid").jqGrid({
+        datatype: 'local',
+        data: data,
+        colModel: [
+          { 
+            name: 'name', 
+            label: 'Name', 
+            editable: true,
+            editoptions: {
+              placeholder: 'Enter a Name',
+              fake_attr: 'some value',
+              class: 'custom-class'
+            }
+          },
+          { 
+            name: 'timestamp',
+            label: 'Date',
+            formatter: 'date',
+            formatoptions:{ srcformat: 'U', newformat: 'M jS Y' }
+          },
+          { 
+            name: 'verified', 
+            label: 'Verified', 
+            formatter: isVerified,
+            editable: true,
+            edittype: 'checkbox',
+            editoptions: {value: "Yes:No"}
+          },
+          { name: 'website', label: 'Website', formatter: 'link'}
+        ],
+        pager: '#pager',
+        pagerpos: 'center',
+        recordpos: 'right',
+        pgbuttons: true,
+        pginput: true,
+        viewrecords: true,
+        rowNum: 3,
+        rowList: [3, 5, 10],
+        pgtext: "{0} out of {1}",
+        recordtext: "Displaying [{0} - {1}] of {2}"
+      });
+      $("#grid").jqGrid('navGrid', "#pager", {
+        view: true
+      });
+
+      function isVerified(val, cellProps, rowData){
+        if(val){
+          return 'Yes';
+        }else{
+          return "No";
+        }
+      }
+    </script>
   </body>
 </html>
