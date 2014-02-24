@@ -10,5 +10,231 @@
   </head>
 
   <body>
+    <table id="quickstart_grid"></table>
+    <div id="pager"></div>
+    
+    <script>
+      /* Data generated using http://www.json-generator.com/ */
+      var dataArray = {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "total": 50,
+        "result": [
+            {
+                "name": "Kelsey, Cervantes",
+                "phone": "(837) 558-3821"
+            },
+            {
+                "name": "Franklin, Bradford",
+                "phone": "(974) 526-2602"
+            },
+            {
+                "name": "Combs, Rivers",
+                "phone": "(877) 494-2156"
+            },
+            {
+                "name": "Coffey, Adkins",
+                "phone": "(905) 573-3890"
+            },
+            {
+                "name": "Houston, Rios",
+                "phone": "(977) 487-2419"
+            },
+            {
+                "name": "Rice, Holman",
+                "phone": "(994) 457-3901"
+            },
+            {
+                "name": "Elena, Lucas",
+                "phone": "(929) 537-2787"
+            },
+            {
+                "name": "Noemi, Barrera",
+                "phone": "(849) 473-3699"
+            },
+            {
+                "name": "Lynn, Peters",
+                "phone": "(940) 560-2400"
+            },
+            {
+                "name": "Robbie, Hogan",
+                "phone": "(802) 411-3575"
+            },
+            {
+                "name": "Lillian, Estrada",
+                "phone": "(926) 537-3926"
+            },
+            {
+                "name": "Rebecca, Gates",
+                "phone": "(815) 422-2040"
+            },
+            {
+                "name": "Peck, Powers",
+                "phone": "(873) 576-2081"
+            },
+            {
+                "name": "Sara, Parker",
+                "phone": "(961) 400-3047"
+            },
+            {
+                "name": "Larson, Powell",
+                "phone": "(985) 560-3776"
+            },
+            {
+                "name": "Rush, Cook",
+                "phone": "(883) 577-2772"
+            },
+            {
+                "name": "Erma, Bauer",
+                "phone": "(937) 563-3903"
+            },
+            {
+                "name": "Holcomb, Landry",
+                "phone": "(853) 511-2760"
+            },
+            {
+                "name": "Jacobs, Olsen",
+                "phone": "(810) 423-2974"
+            },
+            {
+                "name": "Juliet, Beard",
+                "phone": "(947) 531-3691"
+            },
+            {
+                "name": "Trevino, Manning",
+                "phone": "(825) 459-2899"
+            },
+            {
+                "name": "Lila, Santiago",
+                "phone": "(983) 530-3371"
+            },
+            {
+                "name": "Mccray, Frye",
+                "phone": "(954) 501-3102"
+            },
+            {
+                "name": "Alice, Valenzuela",
+                "phone": "(840) 435-2805"
+            },
+            {
+                "name": "Clay, Noble",
+                "phone": "(875) 533-3286"
+            },
+            {
+                "name": "Margaret, Daugherty",
+                "phone": "(992) 476-2871"
+            },
+            {
+                "name": "Jasmine, Hunt",
+                "phone": "(865) 417-3408"
+            },
+            {
+                "name": "Marjorie, Giles",
+                "phone": "(861) 481-2875"
+            },
+            {
+                "name": "Decker, Ochoa",
+                "phone": "(917) 478-3652"
+            },
+            {
+                "name": "Guzman, Bentley",
+                "phone": "(945) 542-3679"
+            },
+            {
+                "name": "Colleen, Levine",
+                "phone": "(967) 593-3325"
+            },
+            {
+                "name": "Stuart, Mejia",
+                "phone": "(886) 478-2085"
+            },
+            {
+                "name": "Shawn, Raymond",
+                "phone": "(974) 559-3091"
+            },
+            {
+                "name": "Nita, Cooke",
+                "phone": "(813) 539-2670"
+            },
+            {
+                "name": "Mathis, Pierce",
+                "phone": "(825) 469-3703"
+            },
+            {
+                "name": "Lucille, Davenport",
+                "phone": "(823) 588-3223"
+            },
+            {
+                "name": "Trina, Malone",
+                "phone": "(863) 420-3154"
+            },
+            {
+                "name": "Terra, Durham",
+                "phone": "(873) 468-3522"
+            },
+            {
+                "name": "Cantrell, Gordon",
+                "phone": "(916) 432-3215"
+            },
+            {
+                "name": "Adams, Reese",
+                "phone": "(857) 537-2202"
+            },
+            {
+                "name": "Krista, Romero",
+                "phone": "(928) 430-2622"
+            },
+            {
+                "name": "Bettye, Skinner",
+                "phone": "(903) 554-2084"
+            },
+            {
+                "name": "Benjamin, Ball",
+                "phone": "(933) 502-2437"
+            },
+            {
+                "name": "Celina, Adams",
+                "phone": "(864) 588-2387"
+            },
+            {
+                "name": "Laverne, Roth",
+                "phone": "(962) 593-2325"
+            },
+            {
+                "name": "Lenora, Fitzgerald",
+                "phone": "(915) 531-3300"
+            },
+            {
+                "name": "Monroe, Knox",
+                "phone": "(979) 439-2837"
+            },
+            {
+                "name": "Patricia, Bell",
+                "phone": "(865) 453-2900"
+            },
+            {
+                "name": "Alexander, Santos",
+                "phone": "(935) 592-3861"
+            },
+            {
+                "name": "Amanda, Mcintyre",
+                "phone": "(936) 423-3945"
+            }
+        ]
+      }
+
+      $("#quickstart_grid").jqGrid({
+        datatype: 'local',
+        data: dataArray.result,
+        colModel: [
+          {name: 'name', label: 'Name'},
+          {name: 'phone', label: 'Phone Number'}
+        ],
+        height: 'auto',
+        caption: 'Users Grid',
+        rowNum: 10,
+        pager: '#pager'
+      });
+    </script>
   </body>
 </html>
