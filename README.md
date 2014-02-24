@@ -1,4 +1,4 @@
-learning_jqgrid
+Learning JqGrid
 ===============
 
 Code written while learning jqgrid from the book "Instant jqGrid" written by the library author himself.
