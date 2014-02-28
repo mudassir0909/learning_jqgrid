@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <h1 id="nameTitle"></h1>
     <table id="grid"></table>
     <div id="pager"></div>
     <script>
@@ -78,11 +79,23 @@
       $("#grid").jqGrid({
         datatype: 'local',
         data: data,
+        onSelectRow: function(rid){
+            var data = $("#grid").jqGrid("getRowData", rid);
+            $("#nameTitle").text(data.name);
+        },
+        ondblClickRow: function(rid){
+            $("#grid").jqGrid("editGridRow", rid, {
+                afterComplete: function(resp, data){
+                    $("#nameTitle").text(data.name);
+                }
+            });
+        },
         colModel: [
           { 
             name: 'name', 
             label: 'Name', 
             editable: true,
+            editrules: { required: true },
             editoptions: {
               placeholder: 'Enter a Name',
               fake_attr: 'some value',
@@ -93,7 +106,13 @@
             name: 'timestamp',
             label: 'Date',
             formatter: 'date',
-            formatoptions:{ srcformat: 'U', newformat: 'M jS Y' }
+            formatoptions:{ srcformat: 'U', newformat: 'M jS Y' },
+            editable: true,
+            editrules: {
+                required: true,
+                custom: true,
+                custom_func: checkDate
+            }
           },
           { 
             name: 'verified', 
@@ -103,7 +122,16 @@
             edittype: 'checkbox',
             editoptions: {value: "Yes:No"}
           },
-          { name: 'website', label: 'Website', formatter: 'link'}
+          { 
+            name: 'website', 
+            label: 'Website', 
+            formatter: 'link',
+            editable: true,
+            editrules: {
+                required: true,
+                url: true
+            }
+          }
         ],
         pager: '#pager',
         pagerpos: 'center',
@@ -126,6 +154,11 @@
         }else{
           return "No";
         }
+      }
+
+      function checkDate(val, name){
+        var passes = !isNaN(Date.parse(val));
+        return [passes, "That's not a valid date."];
       }
     </script>
   </body>
